@@ -23,8 +23,8 @@ class TimeTreeService:
     def get_calendar(self, alias_code: str) -> Calendar:
         calendars = self.get_calendars()
         print("Available TimeTree calendars:")
-　　　　 for c in calendars:
-    　　     print(f"- {c['name']} (code={c['alias_code']})")
+        for c in calendars:
+            print(f"- {c['name']} (code={c['alias_code']})")
 
         for metadata in calendars:
             if metadata["alias_code"] == alias_code:
