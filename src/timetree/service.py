@@ -35,4 +35,16 @@ class TimeTreeService:
         raise RuntimeError(f"Calendar '{alias_code}' not found.")
 
     def get_events(self, calendar: Calendar):
-        return calendar.get_events()
+        events = calendar.get_events()
+        print("DEBUG calendar_users:", calendar.metadata.get("calendar_users"))
+        try:
+            print("DEBUG labels:", calendar.get_labels())
+        except Exception as e:
+            print("DEBUG labels error:", e)
+        for e in events[:5]:
+            print("DEBUG event keys:", sorted(e.keys()))
+            print(
+                "DEBUG event user fields:",
+                {k: e.get(k) for k in ("user_id", "created_by", "label_id", "title")},
+            )
+        return events
